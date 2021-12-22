@@ -1,5 +1,6 @@
 from .offer import Offer
 import pickle
+import json
 
 
 class Company:
@@ -42,6 +43,11 @@ class Company:
         with open(filename, "rb") as f:
             r = pickle.load(f)
         return r
+
+    def serialize_json(self, filename):
+        with open(filename, "w") as f:
+            f = json.dumps(self.__dict__, indent=4)
+            print(f)
 
     def __str__(self):
         return self.name
